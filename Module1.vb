@@ -1,4 +1,4 @@
-﻿Imports System.Console
+Imports System.Console
 Imports Newtonsoft.Json.Linq
 
 Module Module1
@@ -7,20 +7,22 @@ Module Module1
 
         Dim Kadai, Path, Desktop, JsonString As String
         Dim jObject As JObject
+
         Desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
 
-        JsonString = System.IO.File.ReadAllText("Config.json")
+        JsonString = IO.File.ReadAllText("Config.json")
         jObject = JObject.Parse(JsonString)
 
+        WriteLine("警告：同じフォルダ名が存在するときは上書きされます。")
         Write("課題番号：") : Kadai = "課題" & ReadLine()
 
-        Path = Desktop & "\" & jObject("ID").ToString() & jObject("Name").ToString() & " " & Kadai
-        System.IO.Directory.CreateDirectory(Path)
+        Path = Desktop & "\" & jObject("ID").ToString() & " " & jObject("Name").ToString() & " " & Kadai
+        IO.Directory.CreateDirectory(Path)
 
-        System.IO.File.Create(Path & "\取り組んで感じたこと.txt")
+        IO.File.Create(Path & "\取り組んで感じたこと.txt")
 
-        System.Diagnostics.Process.Start(Path)
-        System.Diagnostics.Process.Start(Path & "\取り組んで感じたこと.txt")
+        Diagnostics.Process.Start(Path)
+        Diagnostics.Process.Start(Path & "\取り組んで感じたこと.txt")
 
     End Sub
 
