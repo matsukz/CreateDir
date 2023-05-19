@@ -1,5 +1,6 @@
 # 提出用フォルダテンプレート
 提出時に作成するフォルダと感想テキストをデスクトップに自動で作るやつです。
+[Json.NET - Newtonsonft](https://www.newtonsoft.com/json)を利用しています。
 # 使い方
 ## 初回起動時前
 1. 同梱の`Config.json`の内容の適切な値に変更する
@@ -30,3 +31,5 @@
 * [フォルダのアイコンのイラスト【フリー素材あそび】](https://commons.nicovideo.jp/material/nc269594)（ニコニ・コモンズ様）
 
 ## 参考サイト
+* [Json.NET - Newtonsonft](https://www.newtonsoft.com/json)
+* [特殊ディレクトリのパスを取得する - dobon.net](https://dobon.net/vb/dotnet/file/getfolderpath.html)
