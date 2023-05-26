@@ -16,7 +16,6 @@ Module Module1
         WriteLine("警告：同じフォルダ名が存在するときは上書きされます。")
         WriteLine("宿題課題の時は先頭に「s」を入力してください。")
 
-
         Write("課題番号：") : Kadai = ReadLine()
 
         If Kadai.Contains("s") Then
