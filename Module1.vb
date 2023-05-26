@@ -14,7 +14,17 @@ Module Module1
         jObject = JObject.Parse(JsonString)
 
         WriteLine("警告：同じフォルダ名が存在するときは上書きされます。")
-        Write("課題番号：") : Kadai = "課題" & ReadLine()
+        WriteLine("宿題課題の時は先頭に「s」を入力してください。")
+
+
+        Write("課題番号：") : Kadai = ReadLine()
+
+        If Kadai.Contains("s") Then
+            Kadai = Kadai.Remove(0, 1)
+            Kadai = "宿題課題 " & Kadai
+        Else
+            Kadai = "課題 " & Kadai
+        End If
 
         Path = Desktop & "\" & jObject("ID").ToString() & " " & jObject("Name").ToString() & " " & Kadai
         IO.Directory.CreateDirectory(Path)
@@ -22,7 +32,9 @@ Module Module1
         IO.File.Create(Path & "\取り組んで感じたこと.txt")
 
         Diagnostics.Process.Start(Path)
-        Diagnostics.Process.Start(Path & "\取り組んで感じたこと.txt")
+        Diagnostics.Process.Start("notepad.exe", Path & "\取り組んで感じたこと.txt")
+
+        End
 
     End Sub
 
