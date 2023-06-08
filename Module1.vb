@@ -5,7 +5,8 @@ Module Module1
 
     Sub Main()
 
-        Dim Kadai, Path, Desktop, JsonString As String
+        Dim Uwagaki, Kadai, Path, Desktop, JsonString As String
+
         Dim jObject As JObject
 
         Desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
@@ -13,8 +14,19 @@ Module Module1
         JsonString = IO.File.ReadAllText("Config.json")
         jObject = JObject.Parse(JsonString)
 
-        WriteLine("警告：同じフォルダ名が存在するときは上書きされます。")
+        Dim Overwrite As Boolean = jObject("Overwrite").ToString()
+
+        If Overwrite = True Then
+            Uwagaki = "有効"
+        ElseIf Overwrite = False Then
+            Uwagaki = "無効"
+        Else
+            Uwagaki = "不明"
+        End If
+
         WriteLine("宿題課題の時は先頭に「s」を入力してください。")
+        WriteLine(vbCrLf & "上書き警告：" & Uwagaki)
+        WriteLine()
 
         Write("課題番号：") : Kadai = ReadLine()
 
@@ -26,12 +38,31 @@ Module Module1
         End If
 
         Path = Desktop & "\" & jObject("ID").ToString() & " " & jObject("Name").ToString() & " " & Kadai
-        IO.Directory.CreateDirectory(Path)
 
-        IO.File.Create(Path & "\取り組んで感じたこと.txt")
+        Select Case Overwrite
 
-        Diagnostics.Process.Start(Path)
-        Diagnostics.Process.Start("notepad.exe", Path & "\取り組んで感じたこと.txt")
+            Case True
+
+                If IO.Directory.Exists(Path) Then
+                    WriteLine(vbCrLf & "既にフォルダが存在しているためキャンセルされました。" & vbCrLf)
+                    Read()
+                Else
+                    IO.Directory.CreateDirectory(Path)
+                    IO.File.Create(Path & "\取り組んで感じたこと.txt")
+
+                    Diagnostics.Process.Start(Path)
+                    Diagnostics.Process.Start("notepad.exe", Path & "\取り組んで感じたこと.txt")
+                End If
+
+            Case False
+
+                IO.Directory.CreateDirectory(Path)
+                IO.File.Create(Path & "\取り組んで感じたこと.txt")
+
+                Diagnostics.Process.Start(Path)
+                Diagnostics.Process.Start("notepad.exe", Path & "\取り組んで感じたこと.txt")
+
+        End Select
 
         End
 
