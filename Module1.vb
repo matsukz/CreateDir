@@ -14,7 +14,7 @@ Module Module1
         JsonString = IO.File.ReadAllText("Config.json")
         jObject = JObject.Parse(JsonString)
 
-        Dim Overwrite As Boolean = jObject("Overwrite").ToString()
+        Dim Overwrite As Boolean = jObject("Overwrite_Warning").ToString()
 
         If Overwrite = True Then
             Uwagaki = "有効"
