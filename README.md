@@ -8,6 +8,7 @@
     |:---:|:---:|
     |ID|学籍番号|
     |Name|名前|
+    |Overwrite_Warning|上書き確認|
     * `""`の中に記述すること
     * 文字コードが`UTF-8`になっていることを確認する
       * 名前が文字化けするため
@@ -41,3 +42,4 @@
 ## 参考サイト
 * [Json.NET - Newtonsonft](https://www.newtonsoft.com/json)
 * [特殊ディレクトリのパスを取得する - dobon.net](https://dobon.net/vb/dotnet/file/getfolderpath.html)
+* [エラー処理（例外処理）の基本](https://dobon.net/vb/dotnet/beginner/exceptionhandling.html)
