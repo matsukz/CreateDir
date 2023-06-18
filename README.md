@@ -16,6 +16,7 @@
 2. ショートカットの作成
     * `Shortcut.bat`を実行
         * 実行ファイル単体では動作しないため、デスクトップなどに設置したいときはショートカットを作成する。
+        * ChatGPTを利用したので参考元が不明なことを謝罪します。
 
 ## ２回目以降
 1. アプリ起動
@@ -44,3 +45,4 @@
 * [Json.NET - Newtonsonft](https://www.newtonsoft.com/json)
 * [特殊ディレクトリのパスを取得する - dobon.net](https://dobon.net/vb/dotnet/file/getfolderpath.html)
 * [エラー処理（例外処理）の基本](https://dobon.net/vb/dotnet/beginner/exceptionhandling.html)
+* [自分のアプリケーションの実行ファイルのパスを取得する - dobon.net](https://dobon.net/vb/dotnet/vb6/apppath.html)
