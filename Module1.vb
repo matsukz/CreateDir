@@ -13,15 +13,16 @@ Module Module1
 
     Sub Main()
 
-        Dim Uwagaki, Kadai, Desktop, JsonString, ID, Name As String
+        Dim ConfigFile, Uwagaki, Kadai, Desktop, JsonString, ID, Name As String
         Dim jObject As JObject
         Dim Overwrite As Boolean
 
         Desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
 
         Try
-            If File.Exists("Config.json") Then
-                JsonString = File.ReadAllText("Config.json")
+            ConfigFile = My.Application.Info.DirectoryPath & "\Config.json"
+            If File.Exists(ConfigFile) Then
+                JsonString = File.ReadAllText(ConfigFile)
             Else
                 MsgBox("Config.jsonが存在しません")
             End If
