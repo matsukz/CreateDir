@@ -11,6 +11,11 @@ Module Module1
         Diagnostics.Process.Start("notepad.exe", Path & "\取り組んで感じたこと.txt")
     End Sub
 
+    Sub EnterError()
+        MsgBox("入力された文字列が不正です")
+        Environment.Exit(1)
+    End Sub
+
     Sub Main()
 
         Dim ConfigFile, Uwagaki, Kadai, Desktop, JsonString, ID, Name As String
@@ -56,31 +61,32 @@ Module Module1
 
         If Overwrite = True Then
             Uwagaki = "有効"
-        ElseIf Overwrite = False Then
-            Uwagaki = "無効"
         Else
-            Uwagaki = "不明"
+            Uwagaki = "無効"
         End If
 
         WriteLine("宿題課題の時は先頭に「s」を入力してください。")
         WriteLine(vbCrLf & "上書き警告：" & Uwagaki)
         WriteLine()
 
-        Write("課題番号：") : Kadai = ReadLine()
+        Write("課題番号 >> ") : Kadai = ReadLine()
 
         If String.IsNullOrWhiteSpace(Kadai) Then
-            MsgBox("入力された文字列が不正です")
-            Read()
-            Environment.Exit(1)
+            EnterError()
         Else
-
         End If
 
         If Kadai.Contains("s") Then
             Kadai = Kadai.Remove(0, 1)
+
+            If String.IsNullOrWhiteSpace(Kadai) Then
+                EnterError()
+            End If
+
             Kadai = "宿題課題 " & Kadai
+
         Else
-            Kadai = "課題 " & Kadai
+                Kadai = "課題 " & Kadai
         End If
 
         Path = Desktop & "\" & ID & " " & Name & " " & Kadai
